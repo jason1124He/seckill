@@ -92,6 +92,9 @@ public class MyCodeGeneratorTest {
                 if (fieldType.toLowerCase().contains("datetime") || fieldType.toLowerCase().contains("timestamp")) {
                     return DbColumnType.DATE;
                 }
+                if (fieldType.toLowerCase().contains("bigint")) {
+                    return DbColumnType.LONG;
+                }
                 return (DbColumnType) super.processTypeConvert(globalConfig, fieldType);
             }
         });

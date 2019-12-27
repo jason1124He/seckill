@@ -18,13 +18,13 @@ public class OrderInfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private Long id;
 
-    private Integer userId;
+    private Long userId;
 
-    private Integer goodsId;
+    private Long goodsId;
 
-    private Integer deliverAddrId;
+    private Long deliverAddrId;
 
     private String goodsName;
 
@@ -40,32 +40,32 @@ public class OrderInfoEntity implements Serializable {
 
     private Date payDate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
-    public Integer getGoodsId() {
+    public Long getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(Integer goodsId) {
+    public void setGoodsId(Long goodsId) {
         this.goodsId = goodsId;
     }
-    public Integer getDeliverAddrId() {
+    public Long getDeliverAddrId() {
         return deliverAddrId;
     }
 
-    public void setDeliverAddrId(Integer deliverAddrId) {
+    public void setDeliverAddrId(Long deliverAddrId) {
         this.deliverAddrId = deliverAddrId;
     }
     public String getGoodsName() {
