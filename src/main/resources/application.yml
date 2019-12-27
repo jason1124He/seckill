@@ -1,1 +1,87 @@
+server:
+  port: 8090
+#  servlet:
+#    context-path: /substation
+#数据库以及druid连接池配置
+spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #开启批量操作allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/seckill?serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useUnicode=true&allowMultiQueries=true
+    username: root
+    password: sug
+    #    password: xlr8683
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+    initial-size: 5 #连接池初始化大小
+    min-idle: 10 #最小空闲连接数
+    max-active: 20 #最大连接数
+    web-stat-filter:
+      exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+    stat-view-servlet: #访问监控网页的登录用户名和密码
+      login-username: druid
+      login-password: druid
+  freemarker:
+    suffix: .html
+    charset: utf-8
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
 
+  #   关闭缓存
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+    suffix: .html
+
+#  redis 设置
+redis:
+  host: 127.0.0.1 #redis 服务器地址
+  port: 6379 #redis端口
+  timeout: 10
+  password: 123456
+  poolMaxTotal: 1000
+  poolMaxIdle: 500
+  poolMaxWait: 500
+
+#是否启用swagger
+#swagger:
+#  enable: false
+#mybatis设置
+mybatis-plus:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.sunplus.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #debug打印sql
+#  日志配置
+logging:
+  #  path: "./log/"
+  file:
+    path: "./log/my.log"#保留日志文件
+#  pattern:
+#    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+#    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+  level:
+    root: info
+    com.seckill: debug
+
+#dll:
+#大华设备sdk包坐在位置配置项
+#  filePath: "D:\\\\work\\\\ideaPro\\\\substation\\\\target\\\\classes\\\\"
+#  filePath: "/usr/local/myApp/substation/dll"
+#自定义redis key,在其他地方需要取用
+#redis:
+#  key:
+#    prefix:
+#      authCode: "portal:authCode:"
+#    expire:
+#      authCode: 120 #验证码超时时间
