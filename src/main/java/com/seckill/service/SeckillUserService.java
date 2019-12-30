@@ -16,5 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface SeckillUserService extends IService<SeckillUserEntity> {
 
-    String login(HttpServletResponse response, LoginVo loginVo);
+    boolean login(HttpServletResponse response, LoginVo loginVo);
+
+    SeckillUserEntity getByToken(String token, HttpServletResponse response);
 }

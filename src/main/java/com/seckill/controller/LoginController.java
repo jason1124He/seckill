@@ -37,7 +37,7 @@ public class LoginController {
     public Result<Boolean> doLogin(HttpServletResponse response, @Validated LoginVo loginVo) {
         log.info(loginVo.toString());
         //登录
-        String msg = userService.login(response, loginVo);
+        /*String msg = userService.login(response, loginVo);
         if (ServiceConstant.NULL_PASSWORD.equals(msg)) {
             return Result.error(CodeMsg.PASSWORD_EMPTY);
         }
@@ -50,6 +50,11 @@ public class LoginController {
         if (ServiceConstant.ERROR_PASSWORD.equals(msg)) {
             return Result.error(CodeMsg.PASSWORD_ERROR);
         }
+//        CodeMsg msg = userService.login(response, loginVo);
+
+        return Result.success(true);*/
+
+        userService.login(response, loginVo);
         return Result.success(true);
     }
 }
