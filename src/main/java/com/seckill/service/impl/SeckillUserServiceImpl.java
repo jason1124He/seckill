@@ -74,7 +74,9 @@ public class SeckillUserServiceImpl extends ServiceImpl<SeckillUserDao, SeckillU
                     throw new GlobalException(CodeMsg.PASSWORD_ERROR);
                 }
             }
-            addCookie(user, response);
+
+            String token = UUIDUtil.uuid();
+            addCookie(user, response, token);
         }
 
 
@@ -88,17 +90,24 @@ public class SeckillUserServiceImpl extends ServiceImpl<SeckillUserDao, SeckillU
 
             SeckillUserEntity user = redisService.get(SeckillUserKey.token, token, SeckillUserEntity.class);
             //延长cookie有效期
-            addCookie(user, response);
+            addCookie(user, response, token);
             return user;
         }
         return null;
     }
 
-    private void addCookie(SeckillUserEntity user, HttpServletResponse response) {
+    /**
+     * 保存cookie
+     * 无须每次生成新token,只需要每次更新之前token的有效期就行
+     *
+     * @param user
+     * @param response
+     * @param token
+     */
+    private void addCookie(SeckillUserEntity user, HttpServletResponse response, String token) {
 
         //实现session同步登录状态
         //浏览器端对应生成cookie
-        String token = UUIDUtil.uuid();
         //session写入到redis中
         redisService.set(SeckillUserKey.token, token, user);
         Cookie cookie = new Cookie(COOKEN_NAME_TOKEN, token);

@@ -75,6 +75,7 @@ public class MyCodeGeneratorTest {
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC");
+//        dsc.setUrl("jdbc:mysql://218.90.135.54:3305/monitoring?useUnicode=true&characterEncoding=utf8");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
@@ -105,17 +106,17 @@ public class MyCodeGeneratorTest {
         //设置从控制台录入
         //pc.setModuleName(scanner("模块名"));
         //父包名。如果为空，将下面子包名必须写全部,否则就只需写子包名
-        pc.setParent("com.seckill");
+        pc.setParent("com.shengpu.ftu");
         //父模块名
         //pc.setModuleName("bootdemo");
         //设置实体包名
-        pc.setEntity("entity");
+        pc.setEntity("bean");
         //设置service包名
         pc.setService("service");
         //设置serviceImpl包名
         pc.setServiceImpl("service.impl");
         //设置mapper包名
-        pc.setMapper("dao");
+        pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
